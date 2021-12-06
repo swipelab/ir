@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/services.dart';
 
 class Ir {
-  static const MethodChannel _channel = const MethodChannel('ir');
+  static const MethodChannel _channel = const OptionalMethodChannel('ir');
 
   static Future<bool?> get hasIrEmitter =>
       _channel.invokeMethod('hasIrEmitter');

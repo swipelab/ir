@@ -32,12 +32,14 @@ class IrPlugin : FlutterPlugin, MethodCallHandler {
                         acc.add(e.maxFrequency);
                         acc
                     }?.toIntArray())
-            "transmit" -> result.success(
-                    call.argument<Int>("carrierFrequency")?.let { carrierFrequency ->
-                        call.argument<IntArray>("pattern")?.let { pattern ->
-                            irManager.transmit(carrierFrequency, pattern)
-                        }
-                    })
+            "transmit" -> {
+                call.argument<Int>("carrierFrequency")?.let { carrierFrequency ->
+                    call.argument<IntArray>("pattern")?.let { pattern ->
+                        irManager.transmit(carrierFrequency, pattern)
+                    }
+                }
+                result.success(null)
+            }
             else -> result.notImplemented()
         }
     }
